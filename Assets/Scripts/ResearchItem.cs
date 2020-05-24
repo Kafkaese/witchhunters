@@ -17,7 +17,16 @@ public class ResearchItem : MonoBehaviour, ResearchObserver
     [SerializeField]
     private List<ResearchItem> _prerequisits= new List<ResearchItem>();
 
-    private bool _unlocked = false;
+    [SerializeField]
+    protected ResearchUpdater researchUpdater;
+
+    [SerializeField]
+    protected bool _unlocked = false;
+
+    public void Start()
+    {
+        researchUpdater.Signup(this);
+    }
 
     public void ResearchUpdate(ResearchItem item)
     {
@@ -38,11 +47,10 @@ public class ResearchItem : MonoBehaviour, ResearchObserver
         foreach (ResearchItem item in _prerequisits)
         {
             string check;
-            //if ()
-            //    preqFormat = preqFormat + "";
+            preqFormat = preqFormat + "/n -" + item.GetName();
         }
 
-        //return "<b>" + _name + "</b> /n" + _description + "/n" + "<b>Prerequisits:</b>" + preqFomrat;
+        return "<b>" + _name + "</b> /n" + _description + "/n" + "<b>Prerequisits:</b>" + preqFormat;
     }
 
     public string GetName()
@@ -50,5 +58,5 @@ public class ResearchItem : MonoBehaviour, ResearchObserver
         return _name;
     }
 
-    
+
 }

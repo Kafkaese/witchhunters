@@ -135,6 +135,13 @@ public class BackRoom : Room, TimeObserver
         }
     }
 
+    // Increases Research Multiplier by given value. Called by Research Items
+    public void IncreaseIncomeMultiplier(int value)
+    {
+        _incomeMultiplier += value;
+        UpdateIncome();
+    }
+
     public void RemoveIncomeWorker()
     {
         if (_incomeWorkers.Contains(_selectedWorker) && !_selectedWorker.GetLocked())

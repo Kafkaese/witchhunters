@@ -173,11 +173,14 @@ public class UIManager : MonoBehaviour
 
     public void BR_Income()
     {
-
+        _BR_income_UI.SetActive(true);
+        _BR_research_UI.SetActive(false);
     }
 
     public void BR_Research()
     {
+        _BR_income_UI.SetActive(false);
+        _BR_research_UI.SetActive(true);
 
     }
 

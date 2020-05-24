@@ -7,11 +7,14 @@ public class ResourceManager : MonoBehaviour
     [SerializeField]
     private UIManager _uiManager; 
 
+    // GOLD AMOUNT
     private int _gold = 0;
 
+    // LIST OF ALL AVAILABLE CHARACTERS IN ROSTER
     [SerializeField]
     public List<PC> roster = new List<PC>();
 
+    
 
 
     public void AddGold(int amount)

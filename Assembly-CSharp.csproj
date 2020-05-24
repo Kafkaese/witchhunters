@@ -63,7 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ResearchItem.cs" />
+    <Compile Include="Assets\ResearchUpdater.cs" />
     <Compile Include="Assets\Scripts\BR_RosterSlot.cs" />
     <Compile Include="Assets\Scripts\BackRoom.cs" />
     <Compile Include="Assets\Scripts\Backroom0.cs" />
@@ -71,6 +71,9 @@
     <Compile Include="Assets\Scripts\CommonRoom.cs" />
     <Compile Include="Assets\Scripts\CommonRoomManageDisplay.cs" />
     <Compile Include="Assets\Scripts\PC.cs" />
+    <Compile Include="Assets\Scripts\ResearchEffect.cs" />
+    <Compile Include="Assets\Scripts\ResearchItem.cs" />
+    <Compile Include="Assets\Scripts\ResearchItems\ResearchThievery.cs" />
     <Compile Include="Assets\Scripts\ResearchObserver.cs" />
     <Compile Include="Assets\Scripts\ResourceManager.cs" />
     <Compile Include="Assets\Scripts\Room.cs" />
