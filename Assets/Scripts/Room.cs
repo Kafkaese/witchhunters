@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Room : MonoBehaviour
 {
@@ -28,9 +29,12 @@ public class Room : MonoBehaviour
     void OnMouseEnter()
     {
         //Debug.Log("Mouse Enter");
-        Vector2 sizes = gameObject.GetComponent<SpriteRenderer>().size;
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            Vector2 sizes = gameObject.GetComponent<SpriteRenderer>().size;
 
-        _uiManager.DrawOutline(gameObject.transform.position.x , gameObject.transform.position.y, sizes.x + .1f, sizes.y + .1f);
+            _uiManager.DrawOutline(gameObject.transform.position.x, gameObject.transform.position.y, sizes.x + .1f, sizes.y + .1f);
+        }
     }
 
     private void OnMouseExit()

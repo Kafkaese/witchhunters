@@ -61,6 +61,8 @@ public class BackRoom : Room, TimeObserver
 
     private List<PC> _researchWorkers = new List<PC>();
 
+    private List<ResearchItem> _completedResearch = new List<ResearchItem>();
+
 
     public void Start()
     {
