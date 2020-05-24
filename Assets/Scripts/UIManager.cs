@@ -33,6 +33,12 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject _BR_research_UI;
 
+    [SerializeField]
+    private Text _BR_IncomeInfo_Tex;
+
+    [SerializeField]
+    private Text _BR_IncomeSize_Text;
+
 
     // COMMON ROOM
 
@@ -90,6 +96,16 @@ public class UIManager : MonoBehaviour
     {
         _outline.gameObject.transform.position = new Vector3(posx, posy);
         _outline.gameObject.transform.localScale = new Vector3(width , height);
+    }
+
+    public void BR_UpdateIncomeInfoText(int income)
+    {
+        _BR_IncomeInfo_Tex.text = "Daily income: " + income + " gold.";
+    }
+
+    public void BR_UpdateIncomeSizeText(string text)
+    {
+        _BR_IncomeSize_Text.text = text;
     }
 
     public void CR_Manage()

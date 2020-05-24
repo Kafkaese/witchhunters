@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CameraMoveControl : MonoBehaviour
 {
@@ -36,49 +37,51 @@ public class CameraMoveControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        // Planar movement at mouse on screen edge
-        if (Input.mousePosition.y >= Screen.height - borderMargin )
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            if (transform.position.y < (bgHeight / 2 - orthoCam.orthographicSize))
+            // Planar movement at mouse on screen edge
+            if (Input.mousePosition.y >= Screen.height - borderMargin)
             {
-                transform.position += Vector3.up * Time.deltaTime * scrollSpeed;
+                if (transform.position.y < (bgHeight / 2 - orthoCam.orthographicSize))
+                {
+                    transform.position += Vector3.up * Time.deltaTime * scrollSpeed;
+                }
             }
-        }
-        // right movement
-        if (Input.mousePosition.x >= Screen.width - borderMargin)
-        {
-
-            if (transform.position.x < (bgWidth / 2 - orthoCam.orthographicSize * aspecRatio))
+            // right movement
+            if (Input.mousePosition.x >= Screen.width - borderMargin)
             {
-                transform.position += Vector3.right * Time.deltaTime * scrollSpeed;
-            }
-        }
-        if (Input.mousePosition.y <= 0 + borderMargin)
-        {
-            if (transform.position.y > (-1 * bgHeight / 2 + orthoCam.orthographicSize))
-            {
-                transform.position += -1 * Vector3.up * Time.deltaTime * scrollSpeed;
-            }
-        }
 
-        // left movement
-        if (Input.mousePosition.x <= 0 + borderMargin)
-        {
-            if (transform.position.x > (-1 * bgWidth / 2 + orthoCam.orthographicSize * aspecRatio))
-            {
-                transform.position += -1 * Vector3.right * Time.deltaTime * scrollSpeed;
+                if (transform.position.x < (bgWidth / 2 - orthoCam.orthographicSize * aspecRatio))
+                {
+                    transform.position += Vector3.right * Time.deltaTime * scrollSpeed;
+                }
             }
-        }
+            if (Input.mousePosition.y <= 0 + borderMargin)
+            {
+                if (transform.position.y > (-1 * bgHeight / 2 + orthoCam.orthographicSize))
+                {
+                    transform.position += -1 * Vector3.up * Time.deltaTime * scrollSpeed;
+                }
+            }
 
-        // Zoom on mousewheel
-        if (Input.mouseScrollDelta.y > 0 && orthoCam.orthographicSize > minZoom)
-        {
-            orthoCam.orthographicSize -= zoomSpeed;
-        }
-        else if (Input.mouseScrollDelta.y < 0 && orthoCam.orthographicSize < maxZoom)
-        {
-            orthoCam.orthographicSize += zoomSpeed;
+            // left movement
+            if (Input.mousePosition.x <= 0 + borderMargin)
+            {
+                if (transform.position.x > (-1 * bgWidth / 2 + orthoCam.orthographicSize * aspecRatio))
+                {
+                    transform.position += -1 * Vector3.right * Time.deltaTime * scrollSpeed;
+                }
+            }
+
+            // Zoom on mousewheel
+            if (Input.mouseScrollDelta.y > 0 && orthoCam.orthographicSize > minZoom)
+            {
+                orthoCam.orthographicSize -= zoomSpeed;
+            }
+            else if (Input.mouseScrollDelta.y < 0 && orthoCam.orthographicSize < maxZoom)
+            {
+                orthoCam.orthographicSize += zoomSpeed;
+            }
         }
     }
 }

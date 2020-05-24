@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BR_RosterSlot : MonoBehaviour
+public class BR_RosterSlot : MonoBehaviour, TimeObserver
 {
     [SerializeField]
     private UIManager _uiManager;
@@ -11,11 +11,16 @@ public class BR_RosterSlot : MonoBehaviour
     [SerializeField]
     private BackRoom _backRoom;
 
+    private TimeKeeper _timeKeeper;
+
     [SerializeField]
     private PC _referencePC;
 
     [SerializeField]
     private Image _avatar;
+
+    [SerializeField]
+    private Image _background;
 
 
     // ROSTER SLOT REFS
@@ -27,8 +32,19 @@ public class BR_RosterSlot : MonoBehaviour
 
     public void Start()
     {
+        _background = gameObject.GetComponent<Image>();
+        if(_background == null)
+        {
+            Debug.Log("Background not found!");
+        }
         _uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
         _backRoom = GameObject.Find("Backroom1").GetComponent<BackRoom>();
+        _timeKeeper = GameObject.Find("TimeKeeper").GetComponent<TimeKeeper>();
+        if (_timeKeeper != null)
+        {
+            _timeKeeper.Signup(this);
+        }
+        
     }
 
     public void SetPC(PC pc)
@@ -45,6 +61,10 @@ public class BR_RosterSlot : MonoBehaviour
         _avatar.sprite = (Sprite)ava;
         _charInfoText.text = "<b>" + name + "</b>" + "\n " + classs;
         _charLevelText.text = lvl.ToString();
+        if (_referencePC.GetLocked())
+        {
+            _background.color = Color.red;
+        }
     }
 
     // Populate information in manage window of Common Room
@@ -52,5 +72,13 @@ public class BR_RosterSlot : MonoBehaviour
     {
         _backRoom.SelectWorker(_referencePC);
 
+    }
+
+    public void TimeStepSignal(string unit)
+    {
+        if (unit == "month")
+        {
+            _background.color = Color.white;
+        }
     }
 }

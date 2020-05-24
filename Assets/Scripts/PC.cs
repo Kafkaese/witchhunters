@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PC : MonoBehaviour
+public class PC : MonoBehaviour, TimeObserver
 {
     // INFO
 
@@ -23,6 +23,12 @@ public class PC : MonoBehaviour
     private int _level;
 
     private bool _noble = false;
+
+
+    // BASE MANAGEMNT
+    private bool _locked;
+
+    private TimeKeeper _timeKeeper;
 
 
     //
@@ -59,10 +65,13 @@ public class PC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        _timeKeeper = GameObject.Find("TimeKeeper").GetComponent<TimeKeeper>();
+        if (_timeKeeper != null)
+        {
+            _timeKeeper.Signup(this);
+        }
         
-       
-
-
     }
 
     // Update is called once per frame
@@ -124,6 +133,21 @@ public class PC : MonoBehaviour
         return _UIsprite;
     }
 
+    public void Lock(bool lockit)
+    {
+        _locked = lockit;
+    }
 
- 
+    public bool GetLocked()
+    {
+        return _locked;
+    }
+
+    public void TimeStepSignal(string unit)
+    {
+        if (unit == "month")
+        {
+            _locked = false;
+        }
+    }
 }

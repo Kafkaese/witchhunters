@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 [System.Serializable]
 public class Slot
@@ -405,6 +406,18 @@ public class CommonRoom : Room, TimeObserver
 
     public void OnMouseDown()
     {
+
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            OpenCRUI();
+
+        }
+    }
+
+    public void OpenCRUI()
+    {
         _uiManager.EnableCommonRoomUI();
+        UpdateRosterSlots();
+        UpdateRecruitSlots();
     }
 }
