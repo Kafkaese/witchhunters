@@ -9,7 +9,7 @@ public class ResearchItem : MonoBehaviour, ResearchObserver
     private string _name;
 
     [SerializeField]
-    private int _timeReq;
+    protected int _timeReq;
 
     [SerializeField]
     private string _description;
@@ -56,6 +56,11 @@ public class ResearchItem : MonoBehaviour, ResearchObserver
     public string GetName()
     {
         return _name;
+    }
+
+    public bool IsLocked()
+    {
+        return !_unlocked;
     }
 
 

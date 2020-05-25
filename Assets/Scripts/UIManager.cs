@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
 
 
     [SerializeField]
-    private GameObject[] _allUI= new GameObject[2];
+    private GameObject[] _allUI;
 
     // TOOLBAR TOP
     [SerializeField]
@@ -57,6 +57,21 @@ public class UIManager : MonoBehaviour
     private Text _rosterSize;
 
 
+    // OFFICE
+
+    [SerializeField]
+    private GameObject _office_UI;
+
+    [SerializeField]
+    private GameObject _Of_Construct_UI;
+    
+    [SerializeField]
+    private GameObject _Of_Notification_UI;
+
+    [SerializeField]
+    private GameObject _Of_Mission_UI;
+
+
     // MANAGE INFO REFS
     [SerializeField]
     private Image _infoSprite;
@@ -76,9 +91,10 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         dateTimeText.text = " 1st Karos Folly 120E3 ";
-
+        _allUI = new GameObject[3];
         _allUI[0] = _commonRoom;
         _allUI[1] = _backRoom1_UI;
+        _allUI[2] = _office_UI;
     }
 
     // Update is called once per frame
@@ -141,6 +157,33 @@ public class UIManager : MonoBehaviour
         _commonRoom.SetActive(true);
     }
 
+    public void EnableOfficeUI()
+    {
+        DisabelAllWindows();
+        _office_UI.SetActive(true);
+    }
+
+    public void Of_Construct()
+    {
+        _Of_Mission_UI.SetActive(false);
+        _Of_Notification_UI.SetActive(false);
+        _Of_Construct_UI.SetActive(true);
+    }
+
+    public void Of_Mission()
+    {
+        _Of_Notification_UI.SetActive(false);
+        _Of_Construct_UI.SetActive(false);
+        _Of_Mission_UI.SetActive(true);
+    }
+
+    public void Of_Notification()
+    {
+        _Of_Construct_UI.SetActive(false);
+        _Of_Mission_UI.SetActive(false);
+        _Of_Notification_UI.SetActive(true);
+    }
+
     public void UpdateInfoWinodowCR(Sprite app, string infoText)
     {
         _infoSprite.sprite = app;
@@ -152,7 +195,7 @@ public class UIManager : MonoBehaviour
         _goldText.text = "" + amount + "";
     }
 
-    private void DisabelAllWindows()
+    public void DisabelAllWindows()
     {
         foreach (GameObject uiWin in _allUI)
         {

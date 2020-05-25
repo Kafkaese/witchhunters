@@ -8,6 +8,7 @@ public class ResourceManager : MonoBehaviour
     private UIManager _uiManager; 
 
     // GOLD AMOUNT
+    [SerializeField]
     private int _gold = 0;
 
     // LIST OF ALL AVAILABLE CHARACTERS IN ROSTER
