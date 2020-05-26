@@ -63,6 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BuildLibrary1.cs" />
+    <Compile Include="Assets\BuildOffice1.cs" />
     <Compile Include="Assets\Scripts\BR_RosterSlot.cs" />
     <Compile Include="Assets\Scripts\BackRoom.cs" />
     <Compile Include="Assets\Scripts\Backroom0.cs" />

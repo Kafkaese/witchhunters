@@ -9,7 +9,7 @@ public class ResearchThievery : ResearchItem, ResearchEffect
 
     public void ApplyResearchEffect()
     {
-        if (_unlocked)
+        if (true)
         {
             BackRoom br = GameObject.Find("Backroom1").GetComponent<BackRoom>();
             if (br != null)
@@ -20,7 +20,7 @@ public class ResearchThievery : ResearchItem, ResearchEffect
             {
                 Debug.Log("Backroom not found!");
             }
-            researchUpdater.AddNewResearch(this);
+            resourceManager.AddResearch(this);
         }
     }
 

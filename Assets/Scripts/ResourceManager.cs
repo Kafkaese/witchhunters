@@ -15,7 +15,10 @@ public class ResourceManager : MonoBehaviour
     [SerializeField]
     public List<PC> roster = new List<PC>();
 
-    
+    // ALL COMPLETED RESEARCH
+    [SerializeField]
+    private List<ResearchItem> _completedResearch = new List<ResearchItem>();
+
 
 
     public void AddGold(int amount)
@@ -45,12 +48,21 @@ public class ResourceManager : MonoBehaviour
         return _gold;
     }
 
-    public void Update()
+    public void AddResearch(ResearchItem item)
     {
-        if(Input.GetKeyDown("c"))
+        _completedResearch.Add(item);
+    }
+
+    public bool IsResearchCompleted(ResearchItem item)
+    {
+        if(_completedResearch.Contains(item))
         {
-            Debug.Log("c key");
-            AddGold(10000);
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
+
 }

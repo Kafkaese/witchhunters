@@ -17,6 +17,11 @@ public class BuildBackroom1 : Building
         _backroom1.SetActive(true);
         GameObject.Find("Backroom0").SetActive(false);
         GameObject.Find("TBB_BR_Button").GetComponent<Button>().interactable = true;
-        researchUpdater.AddNewResearch(this);
+        
+        resourceManager.AddResearch(this);
+        _completed = true;
+        ColorBlock cb = gameObject.GetComponent<Button>().colors;
+        cb.normalColor = Color.white;
+        gameObject.GetComponent<Button>().colors = cb;
     }
 }

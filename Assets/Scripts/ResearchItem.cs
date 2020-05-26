@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class ResearchItem : MonoBehaviour, ResearchObserver
+public class ResearchItem : MonoBehaviour
 {
     [SerializeField]
     private string _name;
@@ -18,16 +18,16 @@ public class ResearchItem : MonoBehaviour, ResearchObserver
     private List<ResearchItem> _prerequisits= new List<ResearchItem>();
 
     [SerializeField]
-    protected ResearchUpdater researchUpdater;
+    protected ResourceManager resourceManager;
 
     [SerializeField]
-    protected bool _unlocked = false;
+    protected bool _completed = false;
 
-    public void Start()
-    {
-        researchUpdater.Signup(this);
-    }
+    
 
+
+    // Observer Pattern NOT USED ANYMORE
+    /*
     public void ResearchUpdate(ResearchItem item)
     {
         if (_prerequisits.Contains(item))
@@ -40,17 +40,26 @@ public class ResearchItem : MonoBehaviour, ResearchObserver
             }
         }
     }
+    */
 
     public string GetDescription()
     {
         string preqFormat = "";
         foreach (ResearchItem item in _prerequisits)
         {
-            string check;
-            preqFormat = preqFormat + "/n -" + item.GetName();
+            
+            if(resourceManager.IsResearchCompleted(item))
+            {
+                preqFormat = preqFormat + "\n - <color=green>" + item.GetName() + "</color>";
+            }
+            else 
+            {
+                preqFormat = preqFormat + "\n - <color=brown>" + item.GetName() + "</color>";
+            }
+            
         }
 
-        return "<b>" + _name + "</b> /n" + _description + "/n" + "<b>Prerequisits:</b>" + preqFormat;
+        return _description + "\n" + "<b>Prerequisits:</b>" + preqFormat;
     }
 
     public string GetName()
@@ -58,10 +67,24 @@ public class ResearchItem : MonoBehaviour, ResearchObserver
         return _name;
     }
 
-    public bool IsLocked()
+    public bool IsUnlocked()
     {
-        return !_unlocked;
+        bool unlocked = true;
+        foreach(ResearchItem preq in _prerequisits)
+        {
+            if(resourceManager.IsResearchCompleted(preq) == false)
+            {
+                unlocked = false;
+            }
+        }
+        return unlocked;
     }
+
+    public bool IsCompleted()
+    {
+        return _completed;
+    }
+
 
 
 }
