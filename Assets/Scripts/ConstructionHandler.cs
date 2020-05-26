@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ConstructionHandler : MonoBehaviour
+public class ConstructionHandler : MonoBehaviour, TimeObserver
 {
+
+    // UI Panel Selection Stuff
     private Building _building;
 
     [SerializeField]
@@ -22,6 +24,27 @@ public class ConstructionHandler : MonoBehaviour
     [SerializeField]
     private Text _constrcut_Button_Text;
 
+    // Building Progress Stuff
+    private Building _underConstruction;
+
+    private int _hoursTilComplete;
+
+    [SerializeField]
+    private TimeKeeper _timeKeeper;
+
+    private void Start()
+    {
+        _timeKeeper.Signup(this);
+    }
+
+    private void OnEnable()
+    {
+        _name.text = "";
+        _description.text = "";
+        _construct_Button.interactable = false;
+        _constrcut_Button_Text.text = "";
+    }
+
     public void PopoulateDescription(Building researchItem)
     {
         _building = researchItem;
@@ -29,7 +52,20 @@ public class ConstructionHandler : MonoBehaviour
         _description.text = _building.GetDescription();
 
         // Enable button if builing is unlocked.
-        if(_building.IsCompleted())
+        if (_underConstruction != null)
+        {
+            _construct_Button.interactable = false;
+            if(_underConstruction == _building)
+            {
+                _constrcut_Button_Text.text = "Building...";
+            }
+            else
+            {
+                _constrcut_Button_Text.text = "Busy";
+            }
+            
+        }
+        else if(_building.IsCompleted())
         {
             _construct_Button.interactable = false;
             _constrcut_Button_Text.text = "Built";
@@ -52,10 +88,24 @@ public class ConstructionHandler : MonoBehaviour
         {
             if(_resourceManager.DeductGold(_building.cost))
             {
-                _building.ApplyResearchEffect();
+                _underConstruction = _building;
+                _hoursTilComplete = _building.GetTimeReq();
+                PopoulateDescription(_building);
             }
         }
     }
 
-
+    public void TimeStepSignal(string unit)
+    {
+        if ((_underConstruction != null) && (unit == "hour"))
+        {
+            _underConstruction.DeductTimeReq(1);
+            _hoursTilComplete = _underConstruction.GetTimeReq();
+            if(_hoursTilComplete < 1)
+            {
+                _underConstruction.ApplyResearchEffect();
+                _underConstruction = null;
+            }
+        }
+    }
 }

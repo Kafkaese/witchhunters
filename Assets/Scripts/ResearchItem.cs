@@ -85,6 +85,15 @@ public class ResearchItem : MonoBehaviour
         return _completed;
     }
 
+    public int GetTimeReq()
+    {
+        return _timeReq;
+    }
+
+    public void DeductTimeReq(int hours)
+    {
+        _timeReq -= hours;
+    }
 
 
 }
