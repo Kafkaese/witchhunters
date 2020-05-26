@@ -5,27 +5,20 @@ using UnityEngine.EventSystems;
 
 public class Room : MonoBehaviour
 {
+    // UI Manager
     [SerializeField]
     protected UIManager _uiManager;
 
+    // TimeKeeper
     [SerializeField]
     protected TimeKeeper _timeKeeper;
 
-    private bool _build = false;
+    // Images for Upgrade
+    [SerializeField]
+    private Sprite[] _upgradeSprites = new Sprite[3];
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
+    // Draws outline at mouse enter
     void OnMouseEnter()
     {
         //Debug.Log("Mouse Enter");
@@ -37,15 +30,19 @@ public class Room : MonoBehaviour
         }
     }
 
+    // Removes outline on mouse exit
     private void OnMouseExit()
     {
         _uiManager.DrawOutline(0, 0, 0, 0);
     }
 
-    private void OnMouseDown()
+    // Upgrades Room Sprite from array
+    public void Upgrade(int lvl)
     {
-        
+        if (lvl > 1 & lvl < 5)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = _upgradeSprites[lvl - 2];
+        }
     }
 
-  
 }
