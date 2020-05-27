@@ -12,16 +12,20 @@ public class NotificationManager : MonoBehaviour
     private SimpleObjectPool _inboxSlotPool;
 
     [SerializeField]
+    private IconFlash _newMessageIcon_TTB;
+
+    [SerializeField]
     private Transform _inboxContentPanel;
 
     [SerializeField]
     private GameObject _messagePrefab;
 
+    // Message Display
     [SerializeField]
     private Text _messageDisplay_Title;
-
     [SerializeField]
     private Text _messageDisplay_Body;
+    private Letter _currentLetter;
 
     [SerializeField]
     private Sprite _openLetter;
@@ -29,9 +33,10 @@ public class NotificationManager : MonoBehaviour
     private Sprite _closedLetter;
 
     [SerializeField]
-    TimeKeeper _timeKeeper;
-    //[SerializeField]
-    //private Sprite _closedLetter;
+    private TimeKeeper _timeKeeper;
+
+    [SerializeField]
+    private UIManager _uiManager;
 
     public void OnEnable()
     {
@@ -59,12 +64,14 @@ public class NotificationManager : MonoBehaviour
             PopulateInbox();
         }
 
+        _newMessageIcon_TTB.NewMessage = true;
 
     }
 
     public void DisplayMessage(LetterSlot letterSlot)
     {
         Letter letter = letterSlot.RefLetter;
+
         // First time opened change icon and set seen true
         if(letter.Seen == false)
         {
@@ -76,11 +83,27 @@ public class NotificationManager : MonoBehaviour
 
         _messageDisplay_Body.text = letter.Message;
 
-        // Make Button go to source
+        _currentLetter = letter;
+
+
+        // Check if there are any more new letters
+        bool _newOne = false;
+
+        foreach (Letter iletter in _inbox)
+        {
+            if (!iletter.Seen)
+            {
+                _newOne = true;
+            }
+        }
+
+        _newMessageIcon_TTB.NewMessage = _newOne;
     }
 
     private void PopulateInbox()
     {
+        
+
         int rsc = _inboxSlots.Count;
 
         for (int i = 0; i < rsc; i++)
@@ -95,6 +118,8 @@ public class NotificationManager : MonoBehaviour
             //Debug.Log("i 0 " + i + ". Getting new slot");
             Letter letter = _inbox[i];
             GameObject newSlot;
+
+            
 
             newSlot = _inboxSlotPool.GetGameObject();
 
@@ -117,5 +142,14 @@ public class NotificationManager : MonoBehaviour
             letterSlot.SetManager(this);
 
         }
+
+
+    }
+
+    public void GoToLetterSource()
+    {
+        string letterSource = _currentLetter.Source;
+
+        _uiManager.CallMethodWithString(letterSource);
     }
 }

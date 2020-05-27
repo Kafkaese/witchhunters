@@ -168,6 +168,7 @@ public class UIManager : MonoBehaviour
         _Of_Mission_UI.SetActive(false);
         _Of_Notification_UI.SetActive(false);
         _Of_Construct_UI.SetActive(true);
+        EnableOfficeUI();
     }
 
     public void Of_Mission()
@@ -175,6 +176,7 @@ public class UIManager : MonoBehaviour
         _Of_Notification_UI.SetActive(false);
         _Of_Construct_UI.SetActive(false);
         _Of_Mission_UI.SetActive(true);
+        EnableOfficeUI();
     }
 
     public void Of_Notification()
@@ -182,6 +184,7 @@ public class UIManager : MonoBehaviour
         _Of_Construct_UI.SetActive(false);
         _Of_Mission_UI.SetActive(false);
         _Of_Notification_UI.SetActive(true);
+        EnableOfficeUI();
     }
 
     public void UpdateInfoWinodowCR(Sprite app, string infoText)
@@ -240,6 +243,15 @@ public class UIManager : MonoBehaviour
         if (confirm)
         {
             _commonRoom_Script.RemovePCfromRoster();
+        }
+    }
+
+    // C#mon theres gottta be a smartr way.
+    public void CallMethodWithString(string methodName)
+    {
+        if (methodName == "Of_Construct")
+        {
+            Of_Construct();
         }
     }
 }

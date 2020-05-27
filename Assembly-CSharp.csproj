@@ -63,7 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\LetterSlot.cs" />
     <Compile Include="Assets\Scripts\BR_RosterSlot.cs" />
     <Compile Include="Assets\Scripts\BackRoom.cs" />
     <Compile Include="Assets\Scripts\Backroom0.cs" />
@@ -72,7 +71,9 @@
     <Compile Include="Assets\Scripts\CommonRoom.cs" />
     <Compile Include="Assets\Scripts\CommonRoomManageDisplay.cs" />
     <Compile Include="Assets\Scripts\ConstructionHandler.cs" />
+    <Compile Include="Assets\Scripts\IconFlash.cs" />
     <Compile Include="Assets\Scripts\Letter.cs" />
+    <Compile Include="Assets\Scripts\LetterSlot.cs" />
     <Compile Include="Assets\Scripts\Library.cs" />
     <Compile Include="Assets\Scripts\NotificationManager.cs" />
     <Compile Include="Assets\Scripts\PC.cs" />
