@@ -32,6 +32,9 @@ public class ConstructionHandler : MonoBehaviour, TimeObserver
     [SerializeField]
     private TimeKeeper _timeKeeper;
 
+    [SerializeField]
+    private NotificationManager _notificationManager;
+
     private void Start()
     {
         _timeKeeper.Signup(this);
@@ -103,7 +106,13 @@ public class ConstructionHandler : MonoBehaviour, TimeObserver
             _hoursTilComplete = _underConstruction.GetTimeReq();
             if(_hoursTilComplete < 1)
             {
+                // Send message to NotificatinManager
+                _notificationManager.SpawnMessage(_underConstruction.GetName() + " has been constructed successfully.", "Of_Construct", "Construction Completed!", false);
+
+                // Build/Upgrade Room
                 _underConstruction.ApplyResearchEffect();
+                
+                // Remove ref to tell script that no more construction is in progress
                 _underConstruction = null;
             }
         }

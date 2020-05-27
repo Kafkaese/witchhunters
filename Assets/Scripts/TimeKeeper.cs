@@ -130,4 +130,9 @@ public class TimeKeeper : MonoBehaviour
         return true;
     }
 
+    public string GetTimeStamp()
+    {
+        return _hours + " Hours , " + _days + " Day of " + _monthNames[_months] + " " + _years + "E3";
+    }
+
 }
