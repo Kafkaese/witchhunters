@@ -96,10 +96,11 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         dateTimeText.text = " 1st Karos Folly 120E3 ";
-        _allUI = new GameObject[3];
+        _allUI = new GameObject[4];
         _allUI[0] = _commonRoom;
         _allUI[1] = _backRoom1_UI;
         _allUI[2] = _office_UI;
+        _allUI[3] = _Lib_Research_UI;
     }
 
 
@@ -143,6 +144,11 @@ public class UIManager : MonoBehaviour
         {
             Of_Construct();
         }
+        else if (methodName == "Lib_research")
+        {
+            Lib_Research();
+        }
+
     }
 
     public void CR_ShowDismiss()

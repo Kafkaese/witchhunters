@@ -25,6 +25,7 @@ public class ConstructionHandler : MonoBehaviour, TimeObserver
     private Text _constrcut_Button_Text;
 
     // Building Progress Stuff
+    [SerializeField]
     private Building _underConstruction;
 
     private int _hoursTilComplete;
@@ -76,7 +77,7 @@ public class ConstructionHandler : MonoBehaviour, TimeObserver
         else if(_building.IsUnlocked())
         {
             _construct_Button.interactable = true;
-            _constrcut_Button_Text.text = "Construct \n (" + _building.cost.ToString() + " gold)";
+            _constrcut_Button_Text.text = "Construct \n (" + _building.Cost.ToString() + " gold)";
         }
         else
         {
@@ -89,7 +90,7 @@ public class ConstructionHandler : MonoBehaviour, TimeObserver
     {
         if(_building.IsUnlocked())
         {
-            if(_resourceManager.DeductGold(_building.cost))
+            if(_resourceManager.DeductGold(_building.Cost))
             {
                 _underConstruction = _building;
                 _hoursTilComplete = _building.GetTimeReq();

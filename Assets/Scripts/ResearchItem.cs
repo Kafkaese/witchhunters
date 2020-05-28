@@ -23,7 +23,11 @@ public class ResearchItem : MonoBehaviour
     [SerializeField]
     protected bool _completed = false;
 
-    
+    [SerializeField]
+    private int cost;
+
+    public int Cost { get => cost; set => cost = value; }
+
 
 
     // Observer Pattern NOT USED ANYMORE
@@ -58,8 +62,12 @@ public class ResearchItem : MonoBehaviour
             }
             
         }
+        if (_prerequisits.Count == 0)
+        {
+            preqFormat = "None";
+        }
 
-        return _description + "\n" + "<b>Prerequisits:</b>" + preqFormat + " \n <b>Building Time:</b> \n" + _timeReq + " hours"; ;
+        return _description + "\n" + "<b>Prerequisits:</b>" + preqFormat + " \n <b>Time:</b> \n" + _timeReq + " hours"; ;
     }
 
     public string GetName()

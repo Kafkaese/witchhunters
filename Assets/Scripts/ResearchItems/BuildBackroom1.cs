@@ -22,8 +22,10 @@ public class BuildBackroom1 : Building
         if (_level == 1)
         {
             _backroom1.SetActive(true);
-            GameObject.Find("Backroom0").SetActive(false);
-            GameObject.Find("TBB_BR_Button").GetComponent<Button>().interactable = true;
+            //GameObject.Find("Backroom0").SetActive(false);
+            GameObject.Find("TBB_BR_Income_Button").GetComponent<Button>().interactable = true;
+            GameObject.Find("TBB_BR_Spy_Button").GetComponent<Button>().interactable = true;
+
         }
         else
         {

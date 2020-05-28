@@ -51,4 +51,6 @@ public class RosterSlot : MonoBehaviour
         _uiManager.FeedPCRefToCRManage(referencePC);
 
     }
+
+
 }
