@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Library : Room
 {
@@ -14,6 +15,16 @@ public class Library : Room
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    private void OnMouseDown()
+    {
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            _uiManager.Lib_Research();
+
+        }
         
     }
 }

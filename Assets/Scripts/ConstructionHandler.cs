@@ -104,6 +104,9 @@ public class ConstructionHandler : MonoBehaviour, TimeObserver
         {
             _underConstruction.DeductTimeReq(1);
             _hoursTilComplete = _underConstruction.GetTimeReq();
+
+            _constrcut_Button_Text.text = "" + _hoursTilComplete + " hours remaining";
+
             if(_hoursTilComplete < 1)
             {
                 // Send message to NotificatinManager
@@ -114,6 +117,9 @@ public class ConstructionHandler : MonoBehaviour, TimeObserver
                 
                 // Remove ref to tell script that no more construction is in progress
                 _underConstruction = null;
+
+                _constrcut_Button_Text.text = "" + _hoursTilComplete + "Built";
+
             }
         }
     }

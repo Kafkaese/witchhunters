@@ -24,6 +24,12 @@ public class PC : MonoBehaviour, TimeObserver
 
     private bool _noble = false;
 
+    // 0 - None
+    // 1 -
+    // 2 -
+    // 3 - 
+    private int _faith;
+
 
     // BASE MANAGEMNT
     private bool _locked;

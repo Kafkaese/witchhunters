@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\LetterSlot.cs" />
     <Compile Include="Assets\Scripts\Library.cs" />
     <Compile Include="Assets\Scripts\NotificationManager.cs" />
+    <Compile Include="Assets\Scripts\Office.cs" />
     <Compile Include="Assets\Scripts\PC.cs" />
     <Compile Include="Assets\Scripts\ResearchEffect.cs" />
     <Compile Include="Assets\Scripts\ResearchItem.cs" />

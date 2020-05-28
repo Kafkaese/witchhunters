@@ -21,7 +21,7 @@ public class BuildLibrary1 : Building
         {
             _library1.SetActive(true);
             GameObject.Find("Library0").SetActive(false);
-            GameObject.Find("TBB_Lib_Button").GetComponent<Button>().interactable = true;
+            GameObject.Find("TBB_Lib_Research_Button").GetComponent<Button>().interactable = true;
         }
         else
         {

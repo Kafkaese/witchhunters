@@ -6,10 +6,19 @@ using UnityEngine.UI;
 public class NotificationManager : MonoBehaviour
 {
     //Inbox
+    
+    [SerializeField]
     private List<Letter> _inbox = new List<Letter>();
+    
+    [SerializeField]
     private Queue<GameObject> _inboxSlots = new Queue<GameObject>();
+    
     [SerializeField]
     private SimpleObjectPool _inboxSlotPool;
+
+
+    //
+
 
     [SerializeField]
     private IconFlash _newMessageIcon_TTB;
@@ -140,6 +149,8 @@ public class NotificationManager : MonoBehaviour
             letterSlot.SetImportant(letter.Important);
 
             letterSlot.SetManager(this);
+
+            _inboxSlots.Enqueue(newSlot);
 
         }
 

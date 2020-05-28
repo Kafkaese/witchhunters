@@ -59,7 +59,7 @@ public class ResearchItem : MonoBehaviour
             
         }
 
-        return _description + "\n" + "<b>Prerequisits:</b>" + preqFormat;
+        return _description + "\n" + "<b>Prerequisits:</b>" + preqFormat + " \n <b>Building Time:</b> \n" + _timeReq + " hours"; ;
     }
 
     public string GetName()
