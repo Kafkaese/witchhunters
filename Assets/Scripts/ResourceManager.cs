@@ -38,6 +38,7 @@ public class ResourceManager : MonoBehaviour
         }
         else
         {
+            _uiManager.FeedbackInsufficientFunds();
             return false;
         }
         

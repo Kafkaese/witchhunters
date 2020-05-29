@@ -19,6 +19,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Text _goldText;
 
+    [SerializeField]
+    private Image _goldImage;
+
     // BACKROOM
 
     [SerializeField]
@@ -221,6 +224,13 @@ public class UIManager : MonoBehaviour
         _office_UI.SetActive(true);
     }
 
+    public void FeedbackInsufficientFunds()
+    {
+
+        StartCoroutine(Flash(_goldImage));
+
+    }
+
     // Feeds reference to PC in management info window to the CR manager
     public void FeedPCRefToCRManage(PC pc)
     {
@@ -297,5 +307,71 @@ public class UIManager : MonoBehaviour
     public void UpdateDateTime(string dateTime)
     {
         dateTimeText.text = dateTime;
+    }
+
+
+    //
+    // COROUTINES
+    //
+
+    // Works only on graphics with green value == blue value
+    IEnumerator Flash(Graphic _graphic)
+    {
+        // times 2 total
+        int nframes = 20;
+
+        // Get alpha and green/blue values
+        float alpha_v = _graphic.color.a;
+        float gb_v = _graphic.color.g;
+
+        // Calculate stepsize based on difference betwen current value und target values (0 for green/blue & 1 for aplha)
+        float stepsize_gb = gb_v / nframes;
+        float stepsize_alpha = (1 - alpha_v) / nframes;
+
+        // seperate index variable for alpha
+        float i_a = alpha_v;
+
+        // One way: increase alpha while decreasing green/blue
+        for (float i = gb_v; i > 0; i -= stepsize_gb)
+        {
+            Color cola = _graphic.color;
+            
+            cola.g = i;
+            cola.b = i;
+            cola.a = i_a;
+
+            _graphic.color = cola;
+
+            i_a += stepsize_alpha;
+
+            yield return null;
+        }
+
+        // Returen index for alpha to 1 wegen sicherheit
+        i_a = 1;
+
+        // Other way: increase green/blue while decreasing alpha
+        for (float i = 0; i < gb_v; i += stepsize_gb)
+        {
+            Color cola = _graphic.color;
+
+            cola.g = i;
+            cola.b = i;
+            cola.a = i_a;
+
+            _graphic.color = cola;
+
+            i_a -= stepsize_alpha;
+
+            yield return null;
+        }
+
+        // Reset initial values for alpha and green/blue
+        Color col = _graphic.color;
+        col.a= alpha_v;
+        col.b = gb_v;
+        col.g = gb_v;
+        _graphic.color = col;
+
     }
 }

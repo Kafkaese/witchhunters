@@ -72,12 +72,15 @@
     <Compile Include="Assets\Scripts\CommonRoomManageDisplay.cs" />
     <Compile Include="Assets\Scripts\ConstructionHandler.cs" />
     <Compile Include="Assets\Scripts\IconFlash.cs" />
+    <Compile Include="Assets\Scripts\Kitchen.cs" />
     <Compile Include="Assets\Scripts\Letter.cs" />
     <Compile Include="Assets\Scripts\LetterSlot.cs" />
     <Compile Include="Assets\Scripts\Library.cs" />
+    <Compile Include="Assets\Scripts\Meal.cs" />
     <Compile Include="Assets\Scripts\NotificationManager.cs" />
     <Compile Include="Assets\Scripts\Office.cs" />
     <Compile Include="Assets\Scripts\PC.cs" />
+    <Compile Include="Assets\Scripts\ProductionQueueSlot.cs" />
     <Compile Include="Assets\Scripts\ResearchEffect.cs" />
     <Compile Include="Assets\Scripts\ResearchItem.cs" />
     <Compile Include="Assets\Scripts\ResearchItems\BuildBackroom1.cs" />
