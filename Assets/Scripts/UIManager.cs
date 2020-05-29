@@ -76,6 +76,12 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject _Lib_Research_UI;
 
+    [SerializeField]
+    private ResearcherChoser _Lib_ResearchChoser;
+
+    [SerializeField]
+    private GameObject _Lib_ResearchChoserGO;
+
 
     // MANAGE INFO REFS
     [SerializeField]
@@ -221,11 +227,30 @@ public class UIManager : MonoBehaviour
         _crManage.AssignPC(pc);
     }
 
+    public void FeedPCtoResearchChoser(PC pc, bool add)
+    {
+        if (add)
+        {
+            _Lib_ResearchChoser.AddResearcher(pc);
+        }
+        else
+        {
+            _Lib_ResearchChoser.RemoveResearcher(pc);
+        }
+
+    }
+
     public void Lib_Research()
     {
         DisabelAllWindows();
         _Lib_Research_UI.SetActive(true);
     }
+
+    public void Lib_ResearchChoser(bool active)
+    {
+        _Lib_ResearchChoserGO.SetActive(active);
+    }
+
     public void Of_Construct()
     {
         _Of_Mission_UI.SetActive(false);

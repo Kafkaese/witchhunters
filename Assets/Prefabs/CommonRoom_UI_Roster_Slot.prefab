@@ -213,7 +213,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 4574875143166895866}
-          m_MethodName: OnMouseDown
+          m_MethodName: OnClickCR
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

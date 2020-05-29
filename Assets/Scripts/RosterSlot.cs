@@ -43,7 +43,7 @@ public class RosterSlot : MonoBehaviour
     }
 
     // Populate information in manage window of Common Room
-    public void OnMouseDown()
+    public void OnClickCR()
     {
         //Debug.Log("Clicked on Dude in Slot");
         _uiManager.UpdateInfoWinodowCR(referencePC.GetSprite(), "<b>" + referencePC.GetName() + "</b>" + "\n " + "<i>" + referencePC.GetClass() + "</i> \n \n Physique:");
@@ -52,5 +52,14 @@ public class RosterSlot : MonoBehaviour
 
     }
 
+    public PC GetPC()
+    {
+        return referencePC;
+    }
 
+    // USED IN RESERCH CHOSER (LIBRARY)
+    public void OnClick()
+    {
+        _uiManager.FeedPCtoResearchChoser(referencePC, true);
+    }
 }

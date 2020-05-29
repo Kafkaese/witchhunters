@@ -27,7 +27,6 @@ public class Library : Room, TimeObserver
 
     // Research Choice Stuff
     
-    private int _maxResearchers = 3;
 
     
 
@@ -93,8 +92,10 @@ public class Library : Room, TimeObserver
         }
     }
 
-    public void ResearchThis()
+    public void ResearchThis(int multiplier)
     {
+        _researchFactor = multiplier;
+
         if (_research.IsUnlocked())
         {
             // INSERT RESEARCHER CHOICE WINDOW SOMEWHERE AROUND HERE

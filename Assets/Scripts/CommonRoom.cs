@@ -135,6 +135,11 @@ public class CommonRoom : Room, TimeObserver
 
         // Signup as Listener at TimeKeeper
         _timeKeeper.Signup(this);
+
+
+
+        // Create starting roster
+        AddPCtoRoster(PCIncubator(false));
     }
 
     void OnEnable()
@@ -263,6 +268,14 @@ public class CommonRoom : Room, TimeObserver
         int _class = Random.Range(0, 5);
         //int _class = 4;
 
+
+        //
+        // REMOVE
+        //
+        _class = 4;
+        //
+        // REMOVE
+        //
 
         // Construct PC instance
         PC tmp = Instantiate(_PCprefab).GetComponent<PC>();

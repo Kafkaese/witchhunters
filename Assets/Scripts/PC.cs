@@ -10,6 +10,8 @@ public class PC : MonoBehaviour, TimeObserver
 
     private string _className;
 
+    private int _baseClass;
+
     private int _cost = 2000;
 
 
@@ -66,6 +68,19 @@ public class PC : MonoBehaviour, TimeObserver
         {
             _cost = 5000;
         }
+
+        if(_className == "Thug")
+        {
+            _baseClass = 0;
+        }
+        else if (_className == "Thief")
+        {
+            _baseClass = 1;
+        }
+        else if (_className == "Charlatan")
+        {
+            _baseClass = 2;
+        }
     }
 
     // Start is called before the first frame update
@@ -95,6 +110,12 @@ public class PC : MonoBehaviour, TimeObserver
     public Sprite GetAvatar()
     {
         return _avatar;
+    }
+
+    public bool IsBaseClass(int classid)
+    {
+
+        return (classid == _baseClass);
     }
 
     public string GetClass()

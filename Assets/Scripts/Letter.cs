@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Letter : MonoBehaviour
+public class Letter
 {
     // Room Instance this notification letter was spawned from
     private string _source;
