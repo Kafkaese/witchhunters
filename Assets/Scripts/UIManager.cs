@@ -15,6 +15,16 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject[] _allUI;
 
+
+    // Mouse Over Text
+    [SerializeField]
+    private Text _mouseOverText;
+    [SerializeField]
+    private GameObject _mouseOverTextPanel;
+    [SerializeField]
+    private Transform _mouseOverTextPanel_transform;
+
+
     // TOOLBAR TOP
     [SerializeField]
     private Text _goldText;
@@ -270,6 +280,20 @@ public class UIManager : MonoBehaviour
     public void Lib_ResearchChoser(bool active)
     {
         _Lib_ResearchChoserGO.SetActive(active);
+    }
+
+    public void MouseOverText(string text)
+    {
+        _mouseOverTextPanel_transform.position = Input.mousePosition;
+        _mouseOverText.text = text;
+        _mouseOverTextPanel.SetActive(true);
+
+    }
+
+    public void MouseOverTextExit()
+    {
+        _mouseOverTextPanel.SetActive(false);
+
     }
 
     public void Of_Construct()

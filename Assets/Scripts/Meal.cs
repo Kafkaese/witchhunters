@@ -23,6 +23,17 @@ public class Meal: MonoBehaviour
     [SerializeField]
     private Text _stockCount;
 
+
+    // Copy Constructor
+    public Meal(Meal oldMeal)
+    {
+        _name = oldMeal.GetName();
+        price = oldMeal.GetCost();
+        _icon = oldMeal.GetImage();
+
+    }
+    
+
     public int GetCost()
     {
         return price;
@@ -41,6 +52,11 @@ public class Meal: MonoBehaviour
     public Sprite GetSprite()
     {
         return _icon.sprite;
+    }
+
+    public Image GetImage()
+    {
+        return _icon;
     }
 
     public void UpdateStockCount(int count)

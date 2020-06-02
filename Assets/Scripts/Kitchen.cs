@@ -76,24 +76,27 @@ public class Kitchen : MonoBehaviour, TimeObserver
     {
         if (_resourceManager.DeductGold(_selectedMeal.GetCost()))
         {
-            _productionQueue.Enqueue(_selectedMeal);
+            Meal newMeal = new Meal(_selectedMeal);
+            _productionQueue.Enqueue(newMeal);
             RefreshProductionQueue();
         }
 
     }
 
-    public void RemoveMealfromProductionQueue()
+    public void RemoveMealfromProductionQueue(Meal meal)
     {
+       
         for (int i = 0; i < _productionQueue.Count; i++)
         {
             
             Meal tmp = _productionQueue.Dequeue();
-            if (tmp != _selectedMeal)
+            if (!Object.ReferenceEquals(tmp,meal))
             {
                 _productionQueue.Enqueue(tmp);
             }
         }
-        _resourceManager.AddGold(_selectedMeal.GetCost() / 2);
+        _resourceManager.AddGold(meal.GetCost() / 2);
+        RefreshProductionQueue();
     }
 
     private void RefreshProductionQueue()
