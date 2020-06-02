@@ -22,6 +22,9 @@ public class ConstructionHandler : MonoBehaviour, TimeObserver
     private Button _construct_Button;
 
     [SerializeField]
+    private Button _cancel_Button;
+
+    [SerializeField]
     private Text _constrcut_Button_Text;
 
     // Building Progress Stuff
@@ -54,6 +57,7 @@ public class ConstructionHandler : MonoBehaviour, TimeObserver
         _building = researchItem;
         _name.text = _building.GetName();
         _description.text = _building.GetDescription();
+        _cancel_Button.interactable = false;
 
         // Enable button if builing is unlocked.
         if (_underConstruction != null)
@@ -62,6 +66,7 @@ public class ConstructionHandler : MonoBehaviour, TimeObserver
             if(_underConstruction == _building)
             {
                 _constrcut_Button_Text.text = "Building...";
+                _cancel_Button.interactable = true;
             }
             else
             {
@@ -84,6 +89,13 @@ public class ConstructionHandler : MonoBehaviour, TimeObserver
             _construct_Button.interactable = false;
             _constrcut_Button_Text.text = "Locked";
         }
+    }
+
+    public void CancelConstruction()
+    {
+        _underConstruction.ResetConstructionTime();
+        _underConstruction = null;
+        PopoulateDescription(_building);
     }
 
     public void ConstructThis()
@@ -119,6 +131,7 @@ public class ConstructionHandler : MonoBehaviour, TimeObserver
                 // Remove ref to tell script that no more construction is in progress
                 _underConstruction = null;
 
+                // Text to Button
                 _constrcut_Button_Text.text =  "Built";
 
             }

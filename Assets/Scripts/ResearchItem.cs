@@ -11,6 +11,8 @@ public class ResearchItem : MonoBehaviour
     [SerializeField]
     protected int _timeReq;
 
+    protected int _initTimeReq;
+
     [SerializeField]
     private string _description;
     
@@ -45,6 +47,10 @@ public class ResearchItem : MonoBehaviour
         }
     }
     */
+    private void Start()
+    {
+        _initTimeReq = _timeReq;
+    }
 
     public string GetDescription()
     {
@@ -103,5 +109,9 @@ public class ResearchItem : MonoBehaviour
         _timeReq -= hours;
     }
 
+    public void ResetConstructionTime()
+    {
+        _timeReq = _initTimeReq;
+    }
 
 }
