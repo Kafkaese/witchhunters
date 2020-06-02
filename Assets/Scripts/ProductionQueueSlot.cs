@@ -10,4 +10,9 @@ public class ProductionQueueSlot : MonoBehaviour
 
     private Meal _item;
 
+    public void AssignMeal(Meal meal)
+    {
+        _item = meal;
+        _itemImage.sprite = meal.GetSprite();
+    }
 }

@@ -130,7 +130,7 @@ public class Library : Room, TimeObserver
                 // Remove ref to tell script that no more research is in progress
                 _researchUnderway = null;
 
-                _startResearch_Button_Text.text = "" + _hoursTilComplete + "Researched";
+                _startResearch_Button_Text.text = "Researched";
 
             }
         }

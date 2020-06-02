@@ -196,5 +196,8 @@ public class ResearcherChoser : MonoBehaviour
             multiplier += researcher.GetLevel();
         }
         _library.ResearchThis(multiplier);
+
+        // Close Research Choser Window
+        _uiManager.Lib_ResearchChoser(false);
     }
 }

@@ -86,6 +86,11 @@ public class UIManager : MonoBehaviour
     private GameObject _Lib_ResearchChoserGO;
 
 
+    // Kitchen
+    [SerializeField]
+    private GameObject _Kitchen_UI;
+
+
     // MANAGE INFO REFS
     [SerializeField]
     private Image _infoSprite;
@@ -105,11 +110,12 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         dateTimeText.text = " 1st Karos Folly 120E3 ";
-        _allUI = new GameObject[4];
+        _allUI = new GameObject[5];
         _allUI[0] = _commonRoom;
         _allUI[1] = _backRoom1_UI;
         _allUI[2] = _office_UI;
         _allUI[3] = _Lib_Research_UI;
+        _allUI[4] = _Kitchen_UI;
     }
 
 
@@ -248,6 +254,11 @@ public class UIManager : MonoBehaviour
             _Lib_ResearchChoser.RemoveResearcher(pc);
         }
 
+    }
+
+    public void KitchenUI()
+    {
+        _Kitchen_UI.SetActive(true);
     }
 
     public void Lib_Research()

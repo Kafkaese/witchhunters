@@ -119,7 +119,7 @@ public class ConstructionHandler : MonoBehaviour, TimeObserver
                 // Remove ref to tell script that no more construction is in progress
                 _underConstruction = null;
 
-                _constrcut_Button_Text.text = "" + _hoursTilComplete + "Built";
+                _constrcut_Button_Text.text =  "Built";
 
             }
         }

@@ -19,7 +19,8 @@ public class ResourceManager : MonoBehaviour
     [SerializeField]
     private List<ResearchItem> _completedResearch = new List<ResearchItem>();
 
-
+    // Meal inventory
+    private Dictionary<Meal, int> _mealInventory = new Dictionary<Meal, int>();
 
     public void AddGold(int amount)
     {
@@ -63,6 +64,32 @@ public class ResourceManager : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    public void AddMeal(Meal meal)
+    {
+        if(_mealInventory.ContainsKey(meal))
+        {
+            int num = _mealInventory[meal];
+            _mealInventory[meal] = num + 1;
+        }
+        else
+        {
+            _mealInventory.Add(meal, 1);
+        }
+        
+    }
+
+    public int GetMealCount(Meal meal)
+    {
+        if(_mealInventory.ContainsKey(meal))
+        {
+            return _mealInventory[meal];
+        }
+        else
+        {
+            return 0;
         }
     }
 
