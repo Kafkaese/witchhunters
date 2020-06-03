@@ -200,4 +200,12 @@ public class ResearcherChoser : MonoBehaviour
         // Close Research Choser Window
         _uiManager.Lib_ResearchChoser(false);
     }
+
+    public void ApplyPassiveXP(int xp)
+    {
+        foreach (PC pc in _activeResearchers)
+        {
+            pc.AddXP(xp);
+        }
+    }
 }

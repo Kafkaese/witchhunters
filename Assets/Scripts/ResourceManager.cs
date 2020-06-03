@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
@@ -53,6 +54,15 @@ public class ResourceManager : MonoBehaviour
     public void AddResearch(ResearchItem item)
     {
         _completedResearch.Add(item);
+    }
+
+    // Apply passive exp gain to all idles
+    public void ApplyPassiveXP(int xp)
+    {
+        foreach (PC pc in roster)
+        {
+            pc.AddXP(xp);
+        }
     }
 
     public bool IsResearchCompleted(ResearchItem item)

@@ -107,6 +107,17 @@ public class PC : MonoBehaviour, TimeObserver
         // Init UI including attacks, skills and equipment
     }
 
+    // PUBLIC METHODS
+
+    // Adds xp EXP
+    public void AddXP(int xp)
+    {
+        _exp += xp;
+    }
+
+
+    // GETTER
+
     public Sprite GetAvatar()
     {
         return _avatar;

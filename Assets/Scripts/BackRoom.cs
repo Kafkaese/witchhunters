@@ -135,6 +135,15 @@ public class BackRoom : Room, TimeObserver
         }
     }
 
+    // Applies passive XP to all income workers
+    public void ApplyPassiveXP(int xp)
+    {
+        foreach (PC pc in _incomeWorkers)
+        {
+            pc.AddXP(xp);
+        }
+    }
+
     // Increases Research Multiplier by given value. Called by Research Items
     public void IncreaseIncomeMultiplier(int value)
     {

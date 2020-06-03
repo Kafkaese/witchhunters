@@ -272,7 +272,7 @@ public class CommonRoom : Room, TimeObserver
         //
         // REMOVE
         //
-        _class = 4;
+        _class = 0;
         //
         // REMOVE
         //

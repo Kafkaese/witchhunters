@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\Meal.cs" />
     <Compile Include="Assets\Scripts\NotificationManager.cs" />
     <Compile Include="Assets\Scripts\Office.cs" />
+    <Compile Include="Assets\Scripts\Officer.cs" />
     <Compile Include="Assets\Scripts\PC.cs" />
     <Compile Include="Assets\Scripts\ProductionQueueSlot.cs" />
     <Compile Include="Assets\Scripts\ResearchEffect.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Assets\Scripts\SimpleObjectPool.cs" />
     <Compile Include="Assets\Scripts\TimeKeeper.cs" />
     <Compile Include="Assets\Scripts\TimeObserver.cs" />
+    <Compile Include="Assets\Scripts\TrainingGround.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

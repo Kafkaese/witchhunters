@@ -62,4 +62,9 @@ public class RosterSlot : MonoBehaviour
     {
         _uiManager.FeedPCtoResearchChoser(referencePC, true);
     }
+
+    public void OnClickOfficer()
+    {
+        _uiManager.FeedPCtoOfficerChoser(referencePC);
+    }
 }

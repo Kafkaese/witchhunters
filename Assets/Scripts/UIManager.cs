@@ -101,6 +101,18 @@ public class UIManager : MonoBehaviour
     private GameObject _Kitchen_UI;
 
 
+    // Workshop
+    [SerializeField]
+    private GameObject _Workshop_UI;
+
+
+    // Training Grounds
+    [SerializeField]
+    private TrainingGround _TrainingGround;
+
+    [SerializeField]
+    private GameObject _TrainingGround_UI;
+    
     // MANAGE INFO REFS
     [SerializeField]
     private Image _infoSprite;
@@ -120,12 +132,14 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         dateTimeText.text = " 1st Karos Folly 120E3 ";
-        _allUI = new GameObject[5];
+        _allUI = new GameObject[7];
         _allUI[0] = _commonRoom;
         _allUI[1] = _backRoom1_UI;
         _allUI[2] = _office_UI;
         _allUI[3] = _Lib_Research_UI;
         _allUI[4] = _Kitchen_UI;
+        _allUI[5] = _Workshop_UI;
+        _allUI[6] = _TrainingGround_UI;
     }
 
 
@@ -266,8 +280,14 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void FeedPCtoOfficerChoser(PC pc)
+    {
+        _TrainingGround.ChoosePCasOfficer(pc);
+    }
+
     public void KitchenUI()
     {
+        DisabelAllWindows();
         _Kitchen_UI.SetActive(true);
     }
 
@@ -320,6 +340,12 @@ public class UIManager : MonoBehaviour
         EnableOfficeUI();
     }
 
+    public void TrainingGroundUI()
+    {
+        DisabelAllWindows();
+        _TrainingGround_UI.SetActive(true);
+    }
+
     public void UpdateInfoWinodowCR(Sprite app, string infoText)
     {
         _infoSprite.sprite = app;
@@ -344,6 +370,12 @@ public class UIManager : MonoBehaviour
         dateTimeText.text = dateTime;
     }
 
+    public void WorkshopUI()
+    {
+        DisabelAllWindows();
+        _Workshop_UI.SetActive(true);
+
+    }
 
     //
     // COROUTINES
