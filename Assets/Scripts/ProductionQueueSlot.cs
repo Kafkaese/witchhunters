@@ -21,6 +21,12 @@ public class ProductionQueueSlot : MonoBehaviour
         _itemImage.sprite = meal.GetSprite();
     }
 
+    public void AssignItem(Meal meal)
+    {
+        _item = meal;
+        _itemImage.sprite = meal.GetSprite();
+    }
+
     private void Start()
     {
         _uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();

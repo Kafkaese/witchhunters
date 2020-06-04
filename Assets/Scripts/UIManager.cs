@@ -105,6 +105,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject _Workshop_UI;
 
+    [SerializeField]
+    private GameObject _Workshop_ProdUI;
+
 
     // Training Grounds
     [SerializeField]

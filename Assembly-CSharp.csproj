@@ -66,12 +66,12 @@
     <Compile Include="Assets\Scripts\BR_RosterSlot.cs" />
     <Compile Include="Assets\Scripts\BackRoom.cs" />
     <Compile Include="Assets\Scripts\Backroom0.cs" />
-    <Compile Include="Assets\Scripts\BuildOffice1.cs" />
     <Compile Include="Assets\Scripts\CameraMoveControl.cs" />
     <Compile Include="Assets\Scripts\CommonRoom.cs" />
     <Compile Include="Assets\Scripts\CommonRoomManageDisplay.cs" />
     <Compile Include="Assets\Scripts\ConstructionHandler.cs" />
     <Compile Include="Assets\Scripts\IconFlash.cs" />
+    <Compile Include="Assets\Scripts\Item.cs" />
     <Compile Include="Assets\Scripts\Kitchen.cs" />
     <Compile Include="Assets\Scripts\Letter.cs" />
     <Compile Include="Assets\Scripts\LetterSlot.cs" />
@@ -82,10 +82,14 @@
     <Compile Include="Assets\Scripts\Officer.cs" />
     <Compile Include="Assets\Scripts\PC.cs" />
     <Compile Include="Assets\Scripts\ProductionQueueSlot.cs" />
+    <Compile Include="Assets\Scripts\ProductionQueueSlotItem.cs" />
+    <Compile Include="Assets\Scripts\ProductionRoom.cs" />
     <Compile Include="Assets\Scripts\ResearchEffect.cs" />
     <Compile Include="Assets\Scripts\ResearchItem.cs" />
     <Compile Include="Assets\Scripts\ResearchItems\BuildBackroom1.cs" />
     <Compile Include="Assets\Scripts\ResearchItems\BuildLibrary1.cs" />
+    <Compile Include="Assets\Scripts\ResearchItems\BuildOffice1.cs" />
+    <Compile Include="Assets\Scripts\ResearchItems\BuildWorkshop.cs" />
     <Compile Include="Assets\Scripts\ResearchItems\Building.cs" />
     <Compile Include="Assets\Scripts\ResearchItems\ResearchItemGeneric.cs" />
     <Compile Include="Assets\Scripts\ResearchItems\ResearchThievery.cs" />
@@ -101,6 +105,7 @@
     <Compile Include="Assets\Scripts\TimeObserver.cs" />
     <Compile Include="Assets\Scripts\TrainingGround.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Workshop.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
